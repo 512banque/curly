@@ -31,11 +31,13 @@
 	$ret = curly("https://www.cloudflare.com/login", $options);
 
 **We can scrap easily with delimiters**
+
 	$options['delimiters'] = array('&lt;h1>Votre adresse IP : ', '&lt;/h1>');
 	$ret = curly("http://1ip.fr", $options);
 
 
 **We can also use a proxy**
+
 	$options['delimiters'] = array('&lt;h1>Votre adresse IP : ', '&lt;/h1>');
 	$options['proxy'] = array('host'=>'192.168.1.1:8080', 'login'=>'login:password');
 	$ret = curly("http://1ip.fr", $options);
