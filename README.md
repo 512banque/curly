@@ -41,3 +41,8 @@
 	$options['delimiters'] = array('<h1>Votre adresse IP : ', '</h1>');
 	$options['proxy'] = array('host'=>'192.168.1.1:8080', 'login'=>'login:password');
 	$ret = curly("http://1ip.fr", $options);
+
+**We can pass raw arguments**
+
+	$options['setopt'] = array('CURLOPT_CONNECTTIMEOUT'=> 0, 'CURLOPT_TIMEOUT' => 400);
+	$ret = curly("http://1ip.fr", $options);

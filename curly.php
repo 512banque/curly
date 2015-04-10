@@ -33,13 +33,13 @@ function curly($url = null, $options = array()) {
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $options['headers']);
 	//proxy
 	if(!empty($options['proxy'])) {
-		// Activation de l'utilisation d'un serveur proxy 
+		// we are using a proxy
 		curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, true); 
 
-		// Définition de l'adresse du proxy 
+		// proxy address
 		curl_setopt($ch, CURLOPT_PROXY, $options['proxy']['host']); 
 
-		// Définition des identifiants si le proxy requiert une identification 
+		// if proxy needs authenticate
 		if (isset($options['proxy']['login'])&&!empty($options['proxy']['login']))
 			curl_setopt($ch, CURLOPT_PROXYUSERPWD, $options['proxy']['login']); 
 	}
@@ -47,6 +47,14 @@ function curly($url = null, $options = array()) {
 	curl_setopt($ch, CURLOPT_REFERER, $options['referer']);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+
+	// add arbitrary info
+	if(isset($options['setopt'])) {
+		foreach ($options['setopt'] as $key => $value) {
+			curl_setopt($ch, $key, $value);
+		}
+	}
+
 	$result = curl_exec($ch);
 	curl_close($ch);
 
