@@ -1,5 +1,17 @@
 # curly
 ## Helps sending curl requests more efficiently
+### List of all arguments
+    curly($url (string), $options (array))
+    $url = 'http://www.test.com';
+    $options=array(
+    	'cookies_file'	=> 'cookies.txt', // store cookies always in the same file for several calls
+    	'postfields'	=> array('login'=>'admin', 'password'=>'azerty123'), // activates post query
+    	'xpath'			=> '//a/href', // retrieve xpath data
+    	'delimiters'	=> array('<h1>', '</h1>'), // delimiters
+    	'proxy' 		=> array('host'=>'192.168.1.1:8080', 'login'=>'login:password'),
+    	'setopt'		=> array('CURLOPT_CONNECTTIMEOUT'=>value)
+    	)
+
 ### Example to retrieve cloudflare's token + login
 
 **Include curly**

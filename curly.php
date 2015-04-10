@@ -1,14 +1,14 @@
 <?php
 function curly($url = null, $options = array()) {
 	$output = array();
-	$url = (!empty($options['url'])) ? empty($options['url']) : $url;
-	if($url) return false;
+	$url = (!empty($options['url'])) ? $options['url'] : $url;
+	if(empty($url)) return false;
 	if(empty($options['useragent'])) $options['useragent'] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36";
-	if(empty($options['referer'])) $options['referer'] = $options['url'];
+	if(empty($options['referer'])) $options['referer'] = $url;
 	if(empty($options['cookies_file'])) $options['cookies_file'] = uniqid().'cookies.txt';;
 	
 	//Initialise une session CURL
-	$ch = curl_init($options['url']);
+	$ch = curl_init($url);
 	//cookies
 	if(!empty($options['cookies_file']))
 	{
@@ -23,7 +23,7 @@ function curly($url = null, $options = array()) {
 		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($options['postfields']));
 	}
 	//fin post
-	if (preg_match('`^https://`i', $options['url'])) 
+	if (preg_match('`^https://`i', $url)) 
 	{ 
 	  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
 	  curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0); 
