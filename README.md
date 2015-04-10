@@ -32,7 +32,7 @@
 
 **We can scrap easily with delimiters**
 
-	$options['delimiters'] = array('&lt;h1>Votre adresse IP : ', '</h1>');
+	$options['delimiters'] = array('<h1>Votre adresse IP : ', '</h1>');
 	$ret = curly("http://1ip.fr", $options);
 
 
