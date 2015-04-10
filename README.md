@@ -10,16 +10,14 @@
 
     // step 1
     $options = array();
-    $options['url'] = "https://www.cloudflare.com/login";
     $options['xpath'] = "//input[@name='security_token']/@value";
     $options['cookies_file'] = 'cookie.txt';
-    $security_token = curly($options); $security_token = $security_token['xpath'];
+    $security_token = curly("https://www.cloudflare.com/login", $options); $security_token = $security_token['xpath'];
 
 **Then, we can login**
 
     // step 2
     $options = array();
-	$options['url'] = "https://www.cloudflare.com/login";
 		$postfields = array();
 		$postfields["login_email"]=$this->email; // input 
 		$postfields["login_pass"]=$this->password; // input 
@@ -29,4 +27,4 @@
 		$postfields["act"]="login"; // input 
 	$options['postfields'] = $postfields;
 	$options['cookies_file'] = 'cookie.txt';
-	$ret = curly($options);
+	$ret = curly("https://www.cloudflare.com/login", $options);
