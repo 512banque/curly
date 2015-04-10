@@ -1,1 +1,23 @@
 # curly
+## Helps sending curl requests more efficiently
+### Example to retrieve cloudflare's token + login
+    // step 1
+    $options = array();
+    $options['url'] = "https://www.cloudflare.com/login";
+    $options['xpath'] = "//input[@name='security_token']/@value";
+    $options['cookies_file'] = 'cookie.txt';
+    $security_token = curly($options); $security_token = $security_token['xpath'];
+
+    // step 2
+    $options = array();
+	$options['url'] = "https://www.cloudflare.com/login";
+		$postfields = array();
+		$postfields["login_email"]=$this->email; // input 
+		$postfields["login_pass"]=$this->password; // input 
+		$postfields["autologin"]="1"; // input 
+		$postfields[""]="Login to CloudFlare"; // input 
+		$postfields["security_token"]= $security_token; // input 
+		$postfields["act"]="login"; // input 
+	$options['postfields'] = $postfields;
+	$options['cookies_file'] = 'cookie.txt';
+	$ret = curly($options);
