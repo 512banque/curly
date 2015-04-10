@@ -2,10 +2,10 @@
 ## Helps sending curl requests more efficiently
 ### Example to retrieve cloudflare's token + login
 
-** Include curly **
+**Include curly**
     require_once('curly.php');
 
-** First, we have to get the token on the login page **
+**First, we have to get the token on the login page**
     // step 1
     $options = array();
     $options['url'] = "https://www.cloudflare.com/login";
@@ -13,7 +13,7 @@
     $options['cookies_file'] = 'cookie.txt';
     $security_token = curly($options); $security_token = $security_token['xpath'];
 
-** Then, we can login **
+**Then, we can login**
     // step 2
     $options = array();
 	$options['url'] = "https://www.cloudflare.com/login";
