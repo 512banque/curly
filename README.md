@@ -19,8 +19,8 @@
     // step 2
     $options = array();
 		$postfields = array();
-		$postfields["login_email"]=$this->email; // input 
-		$postfields["login_pass"]=$this->password; // input 
+		$postfields["login_email"]='username@gmail.com'; // input 
+		$postfields["login_pass"]='qwerty123'; // input 
 		$postfields["autologin"]="1"; // input 
 		$postfields[""]="Login to CloudFlare"; // input 
 		$postfields["security_token"]= $security_token; // input 
