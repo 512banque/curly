@@ -30,6 +30,8 @@
 	$options['cookies_file'] = 'cookie.txt';
 	$ret = curly("https://www.cloudflare.com/login", $options);
 
+## Other examples
+
 **We can scrap easily with delimiters**
 
 	$options['delimiters'] = array('<h1>Votre adresse IP : ', '</h1>');
