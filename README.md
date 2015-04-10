@@ -12,7 +12,8 @@
     $options = array();
     $options['xpath'] = "//input[@name='security_token']/@value";
     $options['cookies_file'] = 'cookie.txt';
-    $security_token = curly("https://www.cloudflare.com/login", $options); $security_token = $security_token['xpath'];
+    $security_token = curly("https://www.cloudflare.com/login", $options);
+    $security_token = $security_token['xpath'];
 
 **Then, we can login**
 
