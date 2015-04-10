@@ -30,7 +30,19 @@ function curly($url = null, $options = array()) {
 	}
 	// custom headers
 	if(!empty($options['headers']))
-	curl_setopt($ch, CURLOPT_HTTPHEADER, $options['headers']);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $options['headers']);
+	//proxy
+	if(!empty($options['proxy'])) {
+		// Activation de l'utilisation d'un serveur proxy 
+		curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, true); 
+
+		// Définition de l'adresse du proxy 
+		curl_setopt($ch, CURLOPT_PROXY, $options['proxy']['host']); 
+
+		// Définition des identifiants si le proxy requiert une identification 
+		if (isset($options['proxy']['login'])&&!empty($options['proxy']['login']))
+			curl_setopt($ch, CURLOPT_PROXYUSERPWD, $options['proxy']['login']); 
+	}
 	curl_setopt($ch, CURLOPT_USERAGENT, $options['useragent']);
 	curl_setopt($ch, CURLOPT_REFERER, $options['referer']);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
