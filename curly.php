@@ -20,7 +20,10 @@ function curly($url = null, $options = array()) {
 	if(!empty($options['postfields']))
 	{
 		curl_setopt($ch, CURLOPT_POST, 1);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($options['postfields']));
+		if(is_array($options['postfields']))
+			curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($options['postfields']));
+		else
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $options['postfields']);
 	}
 	//fin post
 	if (preg_match('`^https://`i', $url)) 
